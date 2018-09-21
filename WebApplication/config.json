@@ -1,0 +1,16 @@
+{
+  "ConnectionStrings": {
+    "CDLConnectionString": "server=(localdb)\\MSSQLLocalDB;Database=CDLDB;Integrated Security=true;MultipleActiveResultSets=true;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning"
+    }
+  },
+  "Tokens": {
+    "Key": "nkdjduqwyrt8723r0nr40tawr73daodiadowdiw7rq3i",
+    "Issuer": "localhost",
+    "Audience": "users"
+  }
+}

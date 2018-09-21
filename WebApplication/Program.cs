@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using WebApplication.Data;
 
 namespace WebApplication
 {
@@ -14,11 +11,38 @@ namespace WebApplication
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var host = BuildWebHost(args);
+
+            RunSeeding(host);
+                
+            host.Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        private static void RunSeeding(IWebHost host)
+        {
+            var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
+
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var seeder = scope.ServiceProvider.GetService<CDLSeeder>();
+                seeder.SeedAsync().Wait(); 
+            }
+        }
+
+        public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .ConfigureAppConfiguration(SetupConfiguration)
+                .UseStartup<Startup>()
+            .Build();
+
+        private static void SetupConfiguration(WebHostBuilderContext ctx, IConfigurationBuilder builder)
+        {
+            // Removing the default configuration options.
+            builder.Sources.Clear();
+
+            builder.AddJsonFile("config.json", false, true)
+                .AddXmlFile("config.xml", true)
+                .AddEnvironmentVariables();
+        }
     }
 }
