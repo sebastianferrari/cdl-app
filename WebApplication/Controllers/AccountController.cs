@@ -62,7 +62,7 @@ namespace WebApplication.Controllers
                     }
                     else
                     {
-                        RedirectToAction("Licenses", "App");
+                        return RedirectToAction("Licenses", "App");
                     }
                 }
             }

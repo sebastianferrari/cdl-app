@@ -53,12 +53,9 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        [Authorize]
-        [HttpGet]
         public IActionResult Licenses()
         {
-            var result = _cdlContext.Licenses.ToList();
-            return View(result);
+            return View();
         }
     }
 }

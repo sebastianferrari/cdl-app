@@ -1,0 +1,12 @@
+﻿<div class="row">
+  <div class="license-info col-md-4" *ngFor="let l of licenses">
+    <div class="card bg-light p-1 m-1">
+      <div class="license-fullname">{{ l.lastName }} - {{ l.firstName }}</div>
+      <ul>
+        <li><strong>ID</strong>: {{ l.id }}</li>
+        <li><strong>CLASS</strong>: {{ l.class }}</li>
+        <li><strong>STATE</strong>: {{ l.state }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

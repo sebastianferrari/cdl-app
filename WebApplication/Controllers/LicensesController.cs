@@ -14,7 +14,7 @@ namespace WebApplication.Controllers
     [Route("api/[Controller]")]
     [ApiController]
     [Produces("application/json")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class LicensesController : ControllerBase
     {
         private readonly ICDLRepository _repository;

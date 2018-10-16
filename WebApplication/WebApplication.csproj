@@ -28,7 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\" />
+    <None Remove="ClientApp\app\dashboard\dashboard.component.ts" />
+    <None Remove="ClientApp\app\dashboard\list.component.ts" />
+    <None Remove="ClientApp\app\shared\dataService.ts" />
+    <None Remove="ClientApp\app\shared\license.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +63,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\dashboard\dashboard.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\dashboard\list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\dataService.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\license.ts" />
     <TypeScriptCompile Include="wwwroot\ts\license.ts" />
     <TypeScriptCompile Include="wwwroot\ts\main.ts" />
     <TypeScriptCompile Include="wwwroot\ts\user.ts" />
