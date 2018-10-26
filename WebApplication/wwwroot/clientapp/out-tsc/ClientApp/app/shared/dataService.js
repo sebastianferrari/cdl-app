@@ -13,8 +13,16 @@ import { map } from 'rxjs/operators';
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
+        this.token = "";
         this.licenses = [];
     }
+    Object.defineProperty(DataService.prototype, "loginRequired", {
+        get: function () {
+            return this.token.length == 0 || this.tokenExpiration > new Date();
+        },
+        enumerable: true,
+        configurable: true
+    });
     DataService.prototype.loadLicenses = function () {
         var _this = this;
         return this.http.get("/api/licenses")
